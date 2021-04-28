@@ -1,0 +1,25 @@
+import React, { Component } from 'react';
+import classes from './WorkoutCardList.module.scss';
+import WorkoutCard from './WorkoutCard/WorkoutCard';
+
+
+class WorkoutCardList extends Component {
+  render() {
+    return (
+      <div className={classes.Wrapper}>
+        {
+          this.props.workouts.map((a, i) => {
+            return (
+              <WorkoutCard
+                key={a.title}
+                title={a.title}
+                delete={() => this.props.delete(i)} />
+            )
+          })
+        }
+      </div>
+    );
+  }
+}
+
+export default WorkoutCardList;
