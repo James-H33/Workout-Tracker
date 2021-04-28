@@ -1,5 +1,10 @@
 .Content {
+  display: grid;
+  row-gap: 2em;
   margin: 0 auto;
+  margin-top: 10px;
   width: 100%;
   max-width: 1400px;
+  padding: 10px;
+  box-sizing: border-box;
 }
