@@ -11,8 +11,8 @@ function App() {
   return (
     <BrowserRouter>
       <Root>
-        <Route path="/" component={Home} />
-        <Route path="/workout/:id" component={Workout} />
+        <Route path="/" exact component={Home} />
+        <Route path="/workout/:id" exact component={Workout} />
       </Root>
     </BrowserRouter>
   );

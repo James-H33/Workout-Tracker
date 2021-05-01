@@ -1,0 +1,20 @@
+
+@mixin GridLayout() {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 20px;
+}
+
+.SetWrapper {
+  margin-bottom: 20px;
+}
+
+.SetHeaders {
+  @include GridLayout();
+  margin: 10px 0px;
+}
+
+.SetItems {
+  @include GridLayout();
+  row-gap: 15px;
+}
+
