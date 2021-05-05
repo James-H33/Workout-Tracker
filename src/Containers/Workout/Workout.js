@@ -1,47 +1,38 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
+import { withRouter } from 'react-router';
 import SetContainer from '../../Components/SetContainer/SetContainer';
+import { WorkoutContext } from '../../Context/Contexts';
+import PillButton from '../../Components/PillButton/PillButton';
 import classes from './Workout.module.scss';
 
-class Workout extends Component {
-  state = {
-    title: 'Lower Body 1',
-    setItems: [
-      {
-        title: 'Barbel Squat',
-        sets: [
-          { weight: 50, reps: 8, isComplete: false },
-          { weight: 50, reps: 8, isComplete: false }
-        ]
-      },
-      {
-        title: 'Leg Curl',
-        sets: [
-          { weight: 105, reps: 8, isComplete: false },
-          { weight: 105, reps: 8, isComplete: false }
-        ]
-      },
-    ],
+const Workout = ( props ) => {
+  const { state, dispatch } = useContext(WorkoutContext);
+  const id = parseInt(props.match.params.id);
+  const workout = state.workouts.find( w => w.id === id) || { title: 'Testing', exercises: [] }
+
+  const addExercise = () => {
+    dispatch({ type: 'AddExercise', payload: { id: workout.id } });
   }
 
-  componentDidMount() {
-    console.log(this.props.match.params.id);
-  }
-
-  render() {
-    return (
+  return (
+    <div className={classes.Wrapper}>
       <div>
-        <div>
-          Start / Finish
-        </div>
-
-        <h2>{this.state.title}</h2>
-
-        <div className={classes.Sets}>
-          { this.state.setItems.map((item, index) => <div key={index}><SetContainer title={item.title} sets={item.sets} /></div>) }
-        </div>
+        Start / Finish
       </div>
-    );
-  }
+
+      <h2>{workout ? workout.title : null}</h2>
+
+      <div className={classes.Sets}>
+        { workout ? workout.exercises.map((item, index) => <div key={index}><SetContainer title={item.title} sets={item.sets} /></div>) : null }
+      </div>
+
+      <div>
+        <PillButton variant={'secondary'} click={() => addExercise()}>
+          Add Exercise
+        </PillButton>
+      </div>
+    </div>
+  );
 }
 
-export default Workout;
+export default withRouter(Workout);
