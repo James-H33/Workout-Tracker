@@ -8,8 +8,7 @@ const WorkoutCard = (props) => {
   const history = useHistory();
 
   const navigate = () => {
-    console.log(history);
-    history.push('/workout/1');
+    history.push(`/workout/${props.id}`);
   }
 
   return (

@@ -8,13 +8,25 @@
   margin-bottom: 20px;
 }
 
+.Title {
+  color: #0093ff;
+}
+
 .SetHeaders {
   @include GridLayout();
   margin: 10px 0px;
 }
 
-.SetItems {
+.Exercises {
   @include GridLayout();
   row-gap: 15px;
 }
 
+.AddSetBtn {
+  display: flex;
+  justify-content: center;
+  background: rgb(213, 213, 213);
+  border-radius: 8px;
+  font-size: 14px;
+  padding: 3px;
+}

@@ -12,6 +12,7 @@ class WorkoutCardList extends Component {
             return (
               <WorkoutCard
                 key={a.title}
+                id={i + 1}
                 title={a.title}
                 delete={() => this.props.delete(i)} />
             )
