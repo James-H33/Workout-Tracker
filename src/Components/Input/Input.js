@@ -2,12 +2,17 @@ import React from 'react';
 import classes from './Input.module.scss';
 
 const Input = ( props ) => {
-  const updated = () => {
+  const updated = (e) => {
     console.log('Changed has happened!');
+    props.updated(e);
   }
 
   return (
-    <input className={classes.Input} type="text" value={props.value} onChange={updated} />
+    <input
+      className={classes.Input}
+      type={props.type}
+      value={props.value}
+      onChange={updated} />
   );
 }
 

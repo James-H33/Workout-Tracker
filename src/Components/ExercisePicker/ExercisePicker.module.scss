@@ -1,0 +1,21 @@
+.ExercisePicker {
+  display: grid;
+  max-height: 200px;
+  overflow-y: scroll;
+
+  img {
+    width: 100%;
+  }
+}
+
+.ExercisePickerOption {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  padding: 10px;
+  align-items: center;
+  border-top: 1px solid #cccccc8f;
+
+  label {
+    margin-left: 15px;
+  }
+}

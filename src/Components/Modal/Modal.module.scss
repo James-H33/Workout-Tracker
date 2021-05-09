@@ -1,0 +1,24 @@
+.Modal {
+  min-width: 300px;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 5px rgb(141, 141, 141);
+  background: white;
+  border-radius: 6px;
+  position: absolute;
+  top: 30%;
+  left: calc(50% - 150px);
+  visibility: hidden;
+  opacity: 0;
+  transition: 200ms linear;
+  transform: translateY(-30px);
+  z-index: 2;
+}
+
+.Active {
+  transition: 250ms ease;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
