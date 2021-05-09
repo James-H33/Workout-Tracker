@@ -1,9 +1,11 @@
 import React from 'react';
 import classes from './Backdrop.module.scss';
 
-const Backdrop = () => {
+const Backdrop = ( props ) => {
+  const styleClasses = [classes.Wrapper, props.isActive ? classes.Active : ''].join( ' ' );
+
   return (
-    <div className={classes.Wrapper}></div>
+    <div className={styleClasses} onClick={props.onDeactivate}></div>
   );
 }
 

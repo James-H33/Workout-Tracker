@@ -21,8 +21,7 @@ const WorkoutCard = (props) => {
       <label>{props.title}</label>
 
       <ul>
-        <li>Squats</li>
-        <li>Curls</li>
+        {props.exercises.map((e, i) => <li key={e.id}>{e.title}</li>)}
       </ul>
     </div>
   );
