@@ -59,12 +59,28 @@ const updateStore = (state, action) => {
   return state;
 }
 
+const addWorkout = (state, action) => {
+  debugger;
+  const workouts = [...state.workouts, new WorkoutModel({ id: 534, title: 'Upper Body 1' })];
+  return { ...state, workouts };
+}
+
+const deleteWorkout = (state, action) => {
+  const workouts = state.workouts.filter((x, i) => i !== action.payload.index);
+
+  return { ...state, workouts };
+}
+
 const reducer = (state, action) => {
   switch (action.type) {
     case 'AddSet':
       return addSet(state, action);
     case 'AddExercise':
       return addExercise(state, action);
+    case 'AddWorkout':
+      return addWorkout(state, action);
+    case 'DeleteWorkout':
+      return deleteWorkout(state, action);
     case 'UpdateSetValues':
       return updateSetValues(state, action);
     case 'NewState':

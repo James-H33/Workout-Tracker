@@ -1,4 +1,5 @@
 import { SetModel } from './Set.model';
+import { makeGuid } from '../util/utils';
 
 export class ExerciseModel {
   id = '';
@@ -7,7 +8,7 @@ export class ExerciseModel {
 
   constructor(data) {
     const defaults = {
-      id: '',
+      id: makeGuid(),
       title: '',
       sets: [],
       ...data

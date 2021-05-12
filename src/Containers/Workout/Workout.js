@@ -13,7 +13,7 @@ const Workout = ( props ) => {
   const { state, dispatch } = useContext(WorkoutContext);
   const [ localState, setLocaleState ] = useState({ isModalActive: false });
   const id = parseInt(props.match.params.id);
-  const workout = state && state.workouts ? state.workouts.find( w => w.id === id) : null;
+  const workout = state.workouts.find( w => w.id === id);
 
   const addExercise = (name) => {
     setLocaleState({ isModalActive: false });

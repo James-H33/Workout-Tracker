@@ -12,17 +12,19 @@ const WorkoutCard = (props) => {
   }
 
   return (
-    <div className={classes.Wrapper} onClick={navigate}>
+    <div className={classes.Wrapper}>
 
       <div className={classes.Expander}>
         <Expander delete={props.delete} />
       </div>
 
-      <label>{props.title}</label>
+      <div onClick={navigate}>
+        <label>{props.title}</label>
 
-      <ul>
-        {props.exercises.map((e, i) => <li key={e.id}>{e.title}</li>)}
-      </ul>
+        <ul>
+          {props.exercises.map((e, i) => <li key={e.id}>{e.title}</li>)}
+        </ul>
+      </div>
     </div>
   );
 }
