@@ -1,5 +1,6 @@
 
 import { ExerciseModel, SetModel, WorkoutModel } from '../Models';
+import { makeGuid } from '../util/utils';
 
 const addExercise = (state, action) => {
   const workouts = state.workouts.map(x => {
@@ -60,15 +61,17 @@ const updateStore = (state, action) => {
 }
 
 const addWorkout = (state, action) => {
-  debugger;
-  const workouts = [...state.workouts, new WorkoutModel({ id: 534, title: 'Upper Body 1' })];
-  return { ...state, workouts };
+  const { title, cb } = action.payload;
+
+  const id = makeGuid();
+  const workouts = [...state.workouts, new WorkoutModel({ id, title })];
+  cb(id);
+  return updateStore({ ...state, workouts });
 }
 
 const deleteWorkout = (state, action) => {
   const workouts = state.workouts.filter((x, i) => i !== action.payload.index);
-
-  return { ...state, workouts };
+  return updateStore({ ...state, workouts });
 }
 
 const reducer = (state, action) => {
@@ -91,6 +94,5 @@ const reducer = (state, action) => {
       return state;
   }
 }
-
 
 export default reducer;

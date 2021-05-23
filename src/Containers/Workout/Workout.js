@@ -12,7 +12,7 @@ import classes from './Workout.module.scss';
 const Workout = ( props ) => {
   const { state, dispatch } = useContext(WorkoutContext);
   const [ localState, setLocaleState ] = useState({ isModalActive: false });
-  const id = parseInt(props.match.params.id);
+  const id = props.match.params.id;
   const workout = state.workouts.find( w => w.id === id);
 
   const addExercise = (name) => {
