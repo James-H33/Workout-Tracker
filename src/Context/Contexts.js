@@ -1,3 +1,3 @@
 import React from 'react';
 
-export const WorkoutContext = React.createContext(null);
+export const WorkoutContext = React.createContext({});
