@@ -1,28 +1,37 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+
 import SetContainer from '../../Components/SetContainer/SetContainer';
 import Set from '../../Components/SetContainer/Set/Set';
-import { WorkoutContext } from '../../Context/Contexts';
 import PillButton from '../../Components/PillButton/PillButton';
 import Modal from '../../Components/Modal/Modal';
 import Backdrop from '../../Components/Backdrop/Backdrop';
 import ExercisePicker from '../../Components/ExercisePicker/ExercisePicker';
 import classes from './Workout.module.scss';
 
+import {
+  ADD_EXERCISE,
+  ADD_SET,
+  UPDATE_SET_VALUES,
+  STORE_STATE
+} from '../../Actions';
+
 const Workout = ( props ) => {
-  const { state, dispatch } = useContext(WorkoutContext);
+  const dispatch = useDispatch();
+  const state = useSelector(s => s);
   const [ localState, setLocaleState ] = useState({ isModalActive: false });
   const id = props.match.params.id;
   const workout = state.workouts.find( w => w.id === id);
 
   const addExercise = (name) => {
     setLocaleState({ isModalActive: false });
-    dispatch({ type: 'AddExercise', payload: { id: workout.id , excercise: name} });
+    dispatch({ type: ADD_EXERCISE, payload: { id: workout.id , excercise: name} });
   }
 
   const addSet = (index) => {
     const action = {
-      type: 'AddSet',
+      type: ADD_SET,
       payload: { id: workout.id, exerciseIndex: index  }
     }
 
@@ -31,7 +40,7 @@ const Workout = ( props ) => {
 
   const updateSet = (newSet, setIndex, exerciseIndex) => {
     const action = {
-      type: 'UpdateSetValues',
+      type: UPDATE_SET_VALUES,
       payload: { id: workout.id, exerciseIndex, setIndex, newSet }
     }
 
@@ -44,7 +53,7 @@ const Workout = ( props ) => {
 
   useEffect(() => {
     return () => {
-      dispatch({ type: 'StoreState' });
+      dispatch({ type: STORE_STATE });
     }
   }, [dispatch])
 
