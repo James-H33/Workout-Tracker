@@ -3,7 +3,6 @@ import classes from './Input.module.scss';
 
 const Input = ( props ) => {
   const updated = (e) => {
-    console.log('Changed has happened!');
     props.updated(e);
   }
 

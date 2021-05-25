@@ -1,3 +1,12 @@
+import {
+  ADD_SET,
+  ADD_EXERCISE,
+  ADD_WORKOUT,
+  DELETE_WORKOUT,
+  UPDATE_SET_VALUES,
+  NEW_STATE,
+  STORE_STATE
+} from '../Actions'
 
 import { ExerciseModel, SetModel, WorkoutModel } from '../Models';
 import { makeGuid } from '../util/utils';
@@ -74,25 +83,25 @@ const deleteWorkout = (state, action) => {
   return updateStore({ ...state, workouts });
 }
 
-const reducer = (state, action) => {
+const initialState = {};
+
+export const workoutReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'AddSet':
+    case ADD_SET:
       return addSet(state, action);
-    case 'AddExercise':
+    case ADD_EXERCISE:
       return addExercise(state, action);
-    case 'AddWorkout':
+    case ADD_WORKOUT:
       return addWorkout(state, action);
-    case 'DeleteWorkout':
+    case DELETE_WORKOUT:
       return deleteWorkout(state, action);
-    case 'UpdateSetValues':
+    case UPDATE_SET_VALUES:
       return updateSetValues(state, action);
-    case 'NewState':
+    case NEW_STATE:
       return { ...state, ...action.payload }
-    case 'StoreState':
+    case STORE_STATE:
       return updateStore(state, action);
     default:
       return state;
   }
 }
-
-export default reducer;

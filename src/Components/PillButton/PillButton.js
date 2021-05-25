@@ -7,7 +7,6 @@ const PillButton = ( props ) => {
   }
 
   const clicked = () => {
-    console.log('Clicked');
     props.click();
   }
 

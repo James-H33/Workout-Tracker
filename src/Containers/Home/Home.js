@@ -1,16 +1,21 @@
-import React, { Fragment, useContext, useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+
 import WorkoutCardList from '../../Components/WorkoutCardList/WorkoutCardList';
 import classes from './Home.module.scss';
 import Button from '../../Components/Button/Button';
-import { WorkoutContext } from '../../Context/Contexts';
 import WorkoutCard from '../../Components/WorkoutCardList/WorkoutCard/WorkoutCard';
 import Modal from '../../Components/Modal/Modal';
 import Backdrop from '../../Components/Backdrop/Backdrop';
 import Input from '../../Components/Input/Input';
 
-const Home = (props) => {
-  const { state, dispatch } = useContext(WorkoutContext);
+import { DELETE_WORKOUT, ADD_WORKOUT } from '../../Actions';
+
+const Home = () => {
+  const dispatch = useDispatch();
+  const state = useSelector(s => s);
+  const router = useHistory();
 
   const [ localState, setLocaleState ] = useState({
     isModalActive: false,
@@ -18,8 +23,7 @@ const Home = (props) => {
   });
 
   const [ workoutId, setWorkoutId ] = useState(null);
-  const router = useHistory();
-  const workouts = state.workouts;
+  const workouts = state.workouts || [];
 
   useEffect(() => {
     if (workoutId) {
@@ -28,7 +32,7 @@ const Home = (props) => {
   }, [workoutId, router]);
 
   const onDelete = (index) => {
-    dispatch({ type: 'DeleteWorkout', payload: { index } });
+    dispatch({ type: DELETE_WORKOUT, payload: { index } });
   }
 
   const showModal = () => {
@@ -43,7 +47,7 @@ const Home = (props) => {
 
   const startWorkout = () => {
     dispatch({
-      type: 'AddWorkout',
+      type: ADD_WORKOUT,
       payload: { title: localState.workoutTitle, cb: setWorkoutId }
     });
   }
