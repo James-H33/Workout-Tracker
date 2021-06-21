@@ -3,7 +3,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from 'redux-thunk';
 import { workoutReducer } from '../Reducers';
 
-const initialState = {workouts: []};
+const initialState = { workouts: [], isBackdropActive: false };
 
 const middleware = [thunk];
 

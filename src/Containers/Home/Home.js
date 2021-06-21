@@ -10,7 +10,10 @@ import Modal from '../../Components/Modal/Modal';
 import Backdrop from '../../Components/Backdrop/Backdrop';
 import Input from '../../Components/Input/Input';
 
-import { DELETE_WORKOUT, ADD_WORKOUT } from '../../Actions';
+import { deleteWorkout } from '../../Actions/WorkoutActions';
+import { addWorkout } from '../../Actions/WorkoutActions';
+import { WorkoutModel } from '../../Models/Workout.model';
+import { makeGuid } from '../../util/utils';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -31,8 +34,8 @@ const Home = () => {
     }
   }, [workoutId, router]);
 
-  const onDelete = (index) => {
-    dispatch({ type: DELETE_WORKOUT, payload: { index } });
+  const onDelete = async (id) => {
+    await dispatch(deleteWorkout(id));
   }
 
   const showModal = () => {
@@ -45,11 +48,14 @@ const Home = () => {
     setLocaleState({ ...localState, workoutTitle: value });
   }
 
-  const startWorkout = () => {
-    dispatch({
-      type: ADD_WORKOUT,
-      payload: { title: localState.workoutTitle, cb: setWorkoutId }
+  const startWorkout = async () => {
+    const w = new WorkoutModel({
+      id: makeGuid(),
+      title: localState.workoutTitle
     });
+
+    dispatch(addWorkout(w))
+      .then((id) => setWorkoutId(id))
   }
 
   return (
@@ -70,7 +76,7 @@ const Home = () => {
                   id={a.id}
                   title={a.title}
                   exercises={a.exercises}
-                  delete={() => onDelete(i)} />
+                  delete={() => onDelete(a.id)} />
               )
             })}
         </WorkoutCardList>
@@ -81,6 +87,7 @@ const Home = () => {
           <h4>Name your workout: </h4>
           <Input
             value={localState.workoutTitle}
+            placeholder={'Title'}
             updated={updateWorkoutTitle} />
 
           <Button click={startWorkout}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classes from './Expander.module.scss';
 
 const styleBuilder = (flag, activeClasses, inactiveClasses) => {
@@ -6,27 +6,20 @@ const styleBuilder = (flag, activeClasses, inactiveClasses) => {
 }
 
 const Expander = (props) => {
-
-  const [state, setState]  = useState({
-    isExpanded: false
-  })
+  const isExpanded = props.isActive || false;
 
   const open = () => {
-    setState({ isExpanded: true });
-  }
-
-  const close = () => {
-    setState({ isExpanded: false });
+    props.open(true);
   }
 
   const btnStyles = styleBuilder(
-    state.isExpanded,
+    isExpanded,
     [classes.ExpanderBtn, classes.ExpanderBtnInactive],
     [classes.ExpanderBtn]
   );
 
   const itemContainerStyle = styleBuilder(
-    state.isExpanded,
+    isExpanded,
     [classes.ItemContainerActive, classes.ItemContainer],
     [classes.ItemContainer]
   );
@@ -34,10 +27,8 @@ const Expander = (props) => {
   return (
     <div className={classes.Wrapper}>
       <div className={btnStyles} onClick={open}>...</div>
-
       {
-        <div className={itemContainerStyle} onClick={close}>
-          <div onClick={props.edit}>Edit</div>
+        <div className={itemContainerStyle}>
           <div onClick={props.delete}>Delete</div>
         </div>
       }
