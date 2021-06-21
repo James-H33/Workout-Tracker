@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import SetContainer from '../../Components/SetContainer/SetContainer';
@@ -8,17 +9,20 @@ import PillButton from '../../Components/PillButton/PillButton';
 import Modal from '../../Components/Modal/Modal';
 import Backdrop from '../../Components/Backdrop/Backdrop';
 import ExercisePicker from '../../Components/ExercisePicker/ExercisePicker';
+import Button from '../../Components/Button/Button';
 import classes from './Workout.module.scss';
+
+import { updateWorkoutById } from '../../Actions/WorkoutActions';
 
 import {
   ADD_EXERCISE,
   ADD_SET,
-  UPDATE_SET_VALUES,
-  STORE_STATE
+  UPDATE_SET_VALUES
 } from '../../Actions';
 
 const Workout = ( props ) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const state = useSelector(s => s);
   const [ localState, setLocaleState ] = useState({ isModalActive: false });
   const id = props.match.params.id;
@@ -51,16 +55,15 @@ const Workout = ( props ) => {
     setLocaleState({ isModalActive: !localState.isModalActive });
   }
 
-  useEffect(() => {
-    return () => {
-      dispatch({ type: STORE_STATE });
-    }
-  }, [dispatch])
+  const saveWorkout = async () => {
+    await dispatch(updateWorkoutById(workout));
+    history.push('/');
+  }
 
   return (
     <div className={classes.Wrapper}>
       <div>
-        Start / Finish
+        <Button click={saveWorkout}>Finish</Button>
       </div>
 
       <h2>{workout ? workout.title : null}</h2>

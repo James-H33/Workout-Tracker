@@ -5,11 +5,11 @@ import {
   DELETE_WORKOUT,
   UPDATE_SET_VALUES,
   NEW_STATE,
-  STORE_STATE
+  STORE_STATE,
+  UPDATE_WORKOUT
 } from '../Actions'
 
 import { ExerciseModel, SetModel, WorkoutModel } from '../Models';
-import { makeGuid } from '../util/utils';
 
 const addExercise = (state, action) => {
   const workouts = state.workouts.map(x => {
@@ -70,16 +70,25 @@ const updateStore = (state, action) => {
 }
 
 const addWorkout = (state, action) => {
-  const { title, cb } = action.payload;
-
-  const id = makeGuid();
-  const workouts = [...state.workouts, new WorkoutModel({ id, title })];
-  cb(id);
+  const workouts = [...state.workouts, action.payload];
   return updateStore({ ...state, workouts });
 }
 
+const updateWorkout = (state, action) => {
+  const workouts = state.workouts.map(w => {
+
+    if (w.id === action.payload.id) {
+      return action.payload;
+    }
+
+    return w;
+  });
+
+  return { ...state,  workouts };
+}
+
 const deleteWorkout = (state, action) => {
-  const workouts = state.workouts.filter((x, i) => i !== action.payload.index);
+  const workouts = action.payload.workouts;
   return updateStore({ ...state, workouts });
 }
 
@@ -93,6 +102,8 @@ export const workoutReducer = (state = initialState, action) => {
       return addExercise(state, action);
     case ADD_WORKOUT:
       return addWorkout(state, action);
+    case UPDATE_WORKOUT:
+      return updateWorkout(state, action);
     case DELETE_WORKOUT:
       return deleteWorkout(state, action);
     case UPDATE_SET_VALUES:
