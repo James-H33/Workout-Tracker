@@ -1,3 +1,21 @@
 .Input {
   width: 50px;
 }
+
+.Standard {
+  height: 50px;
+  width: 100%;
+  border: 1px solid black;
+  box-sizing: border-box;
+  padding-left: 5px;
+}
+
+.SetInput {
+  width: 50px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 5px;
+ -webkit-appearance: none;
+ font-size: 14px;
+}
+

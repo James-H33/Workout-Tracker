@@ -24,6 +24,7 @@ const Workout = ( props ) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const state = useSelector(s => s);
+
   const [ localState, setLocaleState ] = useState({ isModalActive: false });
   const id = props.match.params.id;
   const workout = state.workouts.find( w => w.id === id);
@@ -51,6 +52,12 @@ const Workout = ( props ) => {
     dispatch(action);
   }
 
+  const removeExercise = async (index) => {
+    let exercises = workout.exercises.filter((e, i) => i !== index);
+    let updatedWorkout = { ...workout, exercises };
+    await dispatch(updateWorkoutById(updatedWorkout));
+  }
+
   const showModal = () => {
     setLocaleState({ isModalActive: !localState.isModalActive });
   }
@@ -58,6 +65,15 @@ const Workout = ( props ) => {
   const saveWorkout = async () => {
     await dispatch(updateWorkoutById(workout));
     history.push('/');
+  }
+
+  const removeSet = async (setIndex, exerciseIndex) => {
+    const exercise = workout.exercises[exerciseIndex];
+    const newSets = exercise.sets.filter((s, i) => i !== setIndex);
+    const newExercise = { ...exercise, sets: newSets };
+    const exercises = workout.exercises.map((e, i) => i === exerciseIndex ? newExercise : e);
+    const updatedWorkout = { ...workout, exercises };
+    await dispatch(updateWorkoutById(updatedWorkout));
   }
 
   return (
@@ -73,7 +89,10 @@ const Workout = ( props ) => {
           workout
             ? workout.exercises.map((item, eIndex) =>
               <div key={eIndex}>
-                <SetContainer title={item.title} addSet={() => addSet(eIndex)}>
+                <SetContainer
+                  title={item.title}
+                  addSet={() => addSet(eIndex)}
+                  removeExercise={() => removeExercise(eIndex)}>
                   {
                     item.sets.map((set, setIndex) =>
                       <Set
@@ -81,7 +100,8 @@ const Workout = ( props ) => {
                         setIndex={setIndex}
                         set={set}
                         updateSet={(s, setIndex) => updateSet(s, setIndex, eIndex)}
-                        />
+                        removeSet ={() => removeSet(setIndex, eIndex)}
+                      />
                     )
                   }
                 </SetContainer>

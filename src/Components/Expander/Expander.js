@@ -24,12 +24,18 @@ const Expander = (props) => {
     [classes.ItemContainer]
   );
 
+  const wrapperStyles = styleBuilder(
+    isExpanded,
+    [classes.WrapperActive, classes.Wrapper],
+    [classes.Wrapper]
+  );
+
   return (
-    <div className={classes.Wrapper}>
+    <div className={wrapperStyles}>
       <div className={btnStyles} onClick={open}>...</div>
       {
         <div className={itemContainerStyle}>
-          <div onClick={props.delete}>Delete</div>
+          {props.children}
         </div>
       }
     </div>

@@ -6,10 +6,13 @@ import {
   UPDATE_SET_VALUES,
   NEW_STATE,
   STORE_STATE,
-  UPDATE_WORKOUT
+  UPDATE_WORKOUT,
+  UPDATE_WORKOUTS,
+  BACKDROP
 } from '../Actions'
 
 import { ExerciseModel, SetModel, WorkoutModel } from '../Models';
+import { LOGGED_IN } from '../Actions/Types';
 
 const addExercise = (state, action) => {
   const workouts = state.workouts.map(x => {
@@ -87,9 +90,25 @@ const updateWorkout = (state, action) => {
   return { ...state,  workouts };
 }
 
+const updateWorkouts = (state, action) => {
+  const workouts = action.payload.workouts;
+
+  return { ...state,  workouts };
+}
+
 const deleteWorkout = (state, action) => {
   const workouts = action.payload.workouts;
   return updateStore({ ...state, workouts });
+}
+
+const updateBackdrop = (state, action) => {
+  return updateStore({ ...state, isBackdropActive: action.payload.isActive });
+}
+
+const updateLoggedInState = (state, action) => {
+  const isLoggedIn = action.payload.isLoggedIn;
+
+  return updateStore({ ...state, isLoggedIn, workouts: [] });
 }
 
 const initialState = {};
@@ -104,14 +123,20 @@ export const workoutReducer = (state = initialState, action) => {
       return addWorkout(state, action);
     case UPDATE_WORKOUT:
       return updateWorkout(state, action);
+    case UPDATE_WORKOUTS:
+      return updateWorkouts(state, action);
     case DELETE_WORKOUT:
       return deleteWorkout(state, action);
+    case LOGGED_IN:
+      return updateLoggedInState(state, action);
     case UPDATE_SET_VALUES:
       return updateSetValues(state, action);
     case NEW_STATE:
       return { ...state, ...action.payload }
     case STORE_STATE:
       return updateStore(state, action);
+    case BACKDROP:
+      return updateBackdrop(state, action);
     default:
       return state;
   }

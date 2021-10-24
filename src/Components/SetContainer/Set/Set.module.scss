@@ -1,4 +1,25 @@
 .SetItem {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 20px;
+  padding: 8px 0;
+  transform: translateX(0);
+  position: relative;
+  align-items: center;
+}
+
+.SetItemDelete {
+  position: absolute;
+  width: 350px;
+  right: -360px;
+  top: 0;
+  bottom: 0;
+  background: rgb(203, 70, 70);
+  display: grid;
+
+  span {
+    padding-left: 10px;
+    padding-top: 12px;
+    color: white;
+    font-weight: bold;
+  }
 }

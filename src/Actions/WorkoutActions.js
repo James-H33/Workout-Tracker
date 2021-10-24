@@ -5,6 +5,7 @@ import {
   NEW_STATE,
   ADD_WORKOUT,
   UPDATE_WORKOUT,
+  UPDATE_WORKOUTS,
   DELETE_WORKOUT
 } from './Types';
 
@@ -43,8 +44,10 @@ export const updateWorkout = (data) => async (dispatch) => {
 export const updateWorkoutById = (data) => async (dispatch) => {
   const response = await WorkoutService.updateWorkout(data);
 
+  console.log('Updated Workout!');
+
   dispatch({
-    type: UPDATE_WORKOUT,
+    type: UPDATE_WORKOUTS,
     payload: response
   });
 

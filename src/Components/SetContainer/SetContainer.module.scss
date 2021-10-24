@@ -17,8 +17,13 @@
   margin: 10px 0px;
 }
 
+.TitleWrapper {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
 .Exercises {
-  @include GridLayout();
+  display: grid;
   row-gap: 15px;
 }
 
