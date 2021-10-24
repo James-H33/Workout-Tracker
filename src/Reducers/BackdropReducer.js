@@ -5,6 +5,8 @@ const updateBackdrop = (state, action) => {
 }
 
 export const backdropReducer = (state = {}, action) => {
+  console.log(state);
+
   switch (action.type) {
     case BACKDROP:
       return updateBackdrop(state, action);

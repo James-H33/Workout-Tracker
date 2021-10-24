@@ -7,41 +7,34 @@ import classes from './Root.module.scss';
 import { getWorkouts } from '../../Actions/WorkoutActions';
 import Backdrop from '../../Components/Backdrop/Backdrop';
 
-let initialState = true;
+import { BACKDROP } from '../../Actions/Types';
+import Header from '../../Components/Header/Header';
 
 const Root = ( props ) => {
   const dispatch = useDispatch();
   const state = useSelector(s => s);
 
-  const navigateHome = () => {
-    props.history.push('/');
-  }
-
-  const fetchWorkouts = async () => {
-    dispatch(await getWorkouts());
+  const deactivateBackdrop = () => {
+    dispatch({ type: BACKDROP, payload: { isActive: false } });
   }
 
   useEffect(() => {
-    if (initialState) {
-      initialState = false;
-      fetchWorkouts();
+    if (state.isLoggedIn) {
+      dispatch(getWorkouts());
     }
-  });
+  }, [state.isLoggedIn, dispatch]);
 
   return (
     <Fragment>
-      <header className={classes.Header}>
-        <h3 onClick={navigateHome}>Workout Tracker</h3>
-      </header>
+     <Header />
 
       <div className={classes.Content}>
         {props.children}
       </div>
 
-
       <Backdrop
         isActive={state.isBackdropActive}
-        onDeactivate={() => null}
+        onDeactivate={() => deactivateBackdrop()}
       />
     </Fragment>
   );

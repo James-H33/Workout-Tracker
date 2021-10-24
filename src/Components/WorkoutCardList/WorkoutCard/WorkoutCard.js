@@ -34,11 +34,9 @@ const WorkoutCard = (props) => {
 
       <div className={wrapperClasses}>
         <div className={classes.Expander}>
-          <Expander
-            isActive={state.isExpanderOpen}
-            delete={props.delete}
-            open={onExpanderOpened}
-          />
+          <Expander isActive={state.isExpanderOpen} open={onExpanderOpened}>
+            <div onClick={props.delete}>Delete</div>
+          </Expander>
         </div>
 
         <div onClick={navigate}>

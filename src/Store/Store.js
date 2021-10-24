@@ -3,7 +3,13 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from 'redux-thunk';
 import { workoutReducer } from '../Reducers';
 
-const initialState = { workouts: [], isBackdropActive: false };
+import { AuthService } from '../Services/Auth.service';
+
+const initialState = {
+  workouts: [],
+  isBackdropActive: false,
+  isLoggedIn: AuthService.isLoggedIn()
+};
 
 const middleware = [thunk];
 
