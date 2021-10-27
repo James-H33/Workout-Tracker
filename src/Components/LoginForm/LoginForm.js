@@ -14,6 +14,8 @@ const LoginForm = () => {
     password: ''
   });
 
+  const [ errState, setErrState ] = useState('');
+
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -25,15 +27,18 @@ const LoginForm = () => {
   }
 
   const loginRequest = async () => {
-    await AuthService.login(state);
-    console.log('success');
+    const response = await AuthService.login(state);
 
-    dispatch({
-      type: LOGGED_IN,
-      payload: { isLoggedIn: true }
-    });
+    if (response.success) {
+      dispatch({
+        type: LOGGED_IN,
+        payload: { isLoggedIn: true }
+      });
 
-    history.push('/');
+      history.push('/');
+    } else {
+      setErrState(response.message);
+    }
   }
 
   return (
@@ -41,7 +46,7 @@ const LoginForm = () => {
       <h3>Login</h3>
 
       <div className={classes.FormInput}>
-        <label for="username">Username</label>
+        <label htmlFor="username">Username</label>
 
         <Input
           id="username"
@@ -53,7 +58,7 @@ const LoginForm = () => {
       </div>
 
       <div className={classes.FormInput}>
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
 
         <Input
           id="password"
@@ -63,6 +68,8 @@ const LoginForm = () => {
           updated={(e) => onValueChange(e, 'password')}
           placeholder="Password" />
       </div>
+
+      {errState ? <div className={classes.ErrorMessage}>{errState}</div> : null}
 
       <Button click={loginRequest}>Submit</Button>
     </div>

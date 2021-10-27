@@ -27,6 +27,10 @@ export default class HttpService {
       body: JSON.stringify(data)
     });
 
+    if (response.status !== 200) {
+      throw await response.json();
+    }
+
     const result = await response.json();
 
     return result;
