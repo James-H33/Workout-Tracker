@@ -1,30 +1,9 @@
 import React from 'react';
 import classes from './ExercisePicker.module.scss';
-import Dumbell from '../../Assets/dumbell.png';
+import e from '../../data/exersices';
 
 const ExercisePicker = ( props ) => {
-  const exercises = [
-    {
-      id: '123',
-      title: 'Pull Ups',
-      image: Dumbell
-    },
-    {
-      id: '567',
-      title: 'Chest Press',
-      image: Dumbell
-    },
-    {
-      id: '789',
-      title: 'Barbel Squat',
-      image: Dumbell
-    },
-    {
-      id: '098',
-      title: 'Incline Press',
-      image: Dumbell
-    }
-  ];
+  const exercises = e;
 
   const view = exercises.map((e, i) => {
     return (

@@ -17,7 +17,7 @@ const Input = ( props ) => {
     props.updated(e);
   }
 
-  const styleClass = getClass(props.class);
+  const styleClass = getClass(props.styleclass);
 
   return (
     <input
@@ -25,6 +25,7 @@ const Input = ( props ) => {
       type={props.type}
       placeholder={props.placeholder}
       value={props.value}
+      disabled={props.disabled}
       onChange={updated} />
   );
 }

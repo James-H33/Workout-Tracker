@@ -20,11 +20,11 @@
 .TitleWrapper {
   display: grid;
   grid-template-columns: 1fr auto;
+  font-size: 16px;
 }
 
 .Exercises {
   display: grid;
-  row-gap: 15px;
 }
 
 .AddSetBtn {

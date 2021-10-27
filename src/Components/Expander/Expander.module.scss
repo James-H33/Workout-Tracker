@@ -1,5 +1,9 @@
 .Wrapper {
   position: relative;
+
+  span {
+    font-size: 15px;
+  }
 }
 
 .WrapperActive {
@@ -14,7 +18,7 @@
   line-height: 6px;
   width: 30px;
   height: 15px;
-  padding-left: 10px;
+  padding: 0px 6px;
   background: #457B9D;
   border-radius: 8px;
   position: absolute;

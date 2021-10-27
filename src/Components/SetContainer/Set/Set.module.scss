@@ -7,6 +7,22 @@
   align-items: center;
 }
 
+.SetItemComplete {
+  @extend .SetItem;
+  background: #a5caa573
+
+  input {
+    background: #a5caa573;
+    border: 1px solid #a5caa573;
+    color: #a5caa573;
+  }
+
+}
+
+.SetItemNum {
+  padding-left: 10px;
+}
+
 .SetItemDelete {
   position: absolute;
   width: 350px;
