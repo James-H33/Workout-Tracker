@@ -24,6 +24,8 @@ const Header = () => {
       type: LOGGED_IN,
       payload: { isLoggedIn: false }
     });
+
+    navigateHome();
   }
 
   const authenticatedView = () => {
