@@ -1,5 +1,7 @@
 export default class HttpService {
-  base = 'http://localhost:9090';
+  constructor() {
+    this.base = 'https://jh-workout-tracker.herokuapp.com';
+  }
 
   async get(path) {
     const response = await fetch(`${this.base}/${path}`, {

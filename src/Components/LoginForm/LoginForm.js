@@ -37,27 +37,27 @@ const LoginForm = () => {
   }
 
   return (
-    <div class={classes.LoginForm}>
+    <div className={classes.LoginForm}>
       <h3>Login</h3>
 
-      <div class={classes.FormInput}>
+      <div className={classes.FormInput}>
         <label for="username">Username</label>
 
         <Input
           id="username"
-          class="Standard"
+          styleclass={'Standard'}
           type="text"
           value={state.username}
           updated={(e) => onValueChange(e, 'username')}
           placeholder="Username" />
       </div>
 
-      <div class={classes.FormInput}>
+      <div className={classes.FormInput}>
         <label for="password">Password</label>
 
         <Input
           id="password"
-          class="Standard"
+          styleclass={'Standard'}
           type="password"
           value={state.password}
           updated={(e) => onValueChange(e, 'password')}

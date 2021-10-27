@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Expander.module.scss';
+import ellipse from '../../Assets/ellipse.svg';
 
 const styleBuilder = (flag, activeClasses, inactiveClasses) => {
   return (flag ? activeClasses : inactiveClasses).join(' ');
@@ -32,7 +33,9 @@ const Expander = (props) => {
 
   return (
     <div className={wrapperStyles}>
-      <div className={btnStyles} onClick={open}>...</div>
+      <div className={btnStyles} onClick={open}>
+        <img src={ellipse} alt="..." />
+      </div>
       {
         <div className={itemContainerStyle}>
           {props.children}
