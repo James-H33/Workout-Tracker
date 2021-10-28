@@ -34,7 +34,7 @@ const SetContainer = ( props ) => {
         </h4>
 
         <Expander open={onToggleExander} isActive={localState.isExpanderActive}>
-          <span onClick={removeExercise}>Remove Exercise</span>
+          <span onClick={removeExercise}>Remove</span>
         </Expander>
       </div>
 

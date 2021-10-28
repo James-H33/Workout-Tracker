@@ -49,7 +49,8 @@
   background: #457B9D;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-20px);
+  position: absolute;
+  transform: translate3d(-100%, -20px, 0);
   transition: transform 500ms ease, opacity 500ms ease;
 
   div {
@@ -60,9 +61,12 @@
 }
 
 .ItemContainerActive {
+  @extend .ItemContainer;
+  position: absolute;
   opacity: 1;
   z-index: 10;
   visibility: visible;
-  transform: translateY(0px);
+  transform: translate3d(-100%, 0px, 0);
   transition: transform 500ms ease, opacity 500ms ease;
+
 }

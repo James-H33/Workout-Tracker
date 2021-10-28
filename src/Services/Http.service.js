@@ -11,6 +11,7 @@ export default class HttpService {
         'Authorization': this.getToken()
       },
     });
+
     const result = await response.json();
 
     return result;
