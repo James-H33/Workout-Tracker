@@ -9,7 +9,7 @@ import Workout from './Containers/Workout/Workout';
 
 import './App.css';
 
-const URL = `${process.env.PUBLIC_URL}`;
+const URL = process.env.PUBLIC_URL;
 
 function App() {
   const state = useSelector(s => s);
@@ -18,9 +18,9 @@ function App() {
     if (state.isLoggedIn) {
       return (
         <Fragment>
-          <Route path={`${URL}/`} exact component={Home} />
-          <Route path={`${URL}/workout/:id`} exact component={Workout} />
-          <Route path={`${URL}/login`} exact component={Login} />
+          <Route path="/" exact component={Home} />
+          <Route path="/workout/:id" exact component={Workout} />
+          <Route path="/login" exact component={Login} />
         </Fragment>
       );
     } else {
@@ -29,7 +29,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={URL}>
       <Root>
         {routes()}
       </Root>
