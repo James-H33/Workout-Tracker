@@ -23,6 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://james-h33.github.io/Workout-Tracker",
   "eslintConfig": {
     "extends": [
       "react-app",
