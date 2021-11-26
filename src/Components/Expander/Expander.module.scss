@@ -1,3 +1,5 @@
+$transition-time: 350ms;
+
 .Wrapper {
   position: relative;
 
@@ -51,7 +53,7 @@
   visibility: hidden;
   position: absolute;
   transform: translate3d(-100%, -20px, 0);
-  transition: transform 500ms ease, opacity 500ms ease;
+  transition: transform $transition-time ease, opacity $transition-time ease;
 
   div {
     &:hover {
@@ -67,6 +69,5 @@
   z-index: 10;
   visibility: visible;
   transform: translate3d(-100%, 0px, 0);
-  transition: transform 500ms ease, opacity 500ms ease;
-
+  transition: transform $transition-time ease, opacity $transition-time ease;
 }
