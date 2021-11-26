@@ -3,6 +3,12 @@
   row-gap: 20px;
 }
 
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .Sets {
   display: grid;
   row-gap: 2em;
@@ -10,9 +16,6 @@
 }
 
 .ModalContent {
-  // label {
-  //   margin-bottom: 10px;
-  // }
 }
 
 .ModalContentTitle {

@@ -14,6 +14,7 @@ import classes from './Workout.module.scss';
 
 import { updateWorkoutById } from '../../Actions/WorkoutActions';
 
+import Timer from '../../Components/Timer/Timer';
 import {
   ADD_EXERCISE,
   ADD_SET,
@@ -78,8 +79,9 @@ const Workout = ( props ) => {
 
   return (
     <div className={classes.Wrapper}>
-      <div>
+      <div className={classes.Header}>
         <Button click={saveWorkout}>Finish</Button>
+        <Timer />
       </div>
 
       <h2>{workout ? workout.title : null}</h2>
