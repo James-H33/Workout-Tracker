@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Input from '../../Input/Input';
 import { SetModel } from '../../../Models';
 import classes from './Set.module.scss';
+import Checkbox from '../../Checkbox/Checkbox';
 
 const Set = ( props ) => {
   const [ localState, setLocalState ] = useState(() => ({
@@ -104,12 +105,13 @@ const Set = ( props ) => {
       </div>
 
       <div>
-        <input
+        <Checkbox changed={onComplete} checked={localState.isComplete} />
+        {/* <input
           className='SetInput'
           type="checkbox"
           onChange={onComplete}
           checked={localState.isComplete}
-        />
+        /> */}
       </div>
     </div>
   );

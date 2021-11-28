@@ -11,14 +11,11 @@ const Timer = () => {
   }, [setTime]);
 
   const format = (t) => {
-    console.log(t);
     if (t >= 60) {
       const m = Math.floor(t / 60);
       let s = t % 60;
-      console.log(m);
 
       s = s < 10 ? `0${s}` : s;
-      console.log(s);
 
       return `${m}.${s}`;
     } else {

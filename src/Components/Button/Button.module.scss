@@ -7,4 +7,10 @@
   outline: none;
   border: none;
   border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+
+  &:focus {
+    background: #34627e;
+  }
 }

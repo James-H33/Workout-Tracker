@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import WorkoutCardList from '../../Components/WorkoutCardList/WorkoutCardList';
 import classes from './Home.module.scss';
 import Button from '../../Components/Button/Button';
+import RippleButton from '../../Components/Button/RippleButton/RippleButton';
 import WorkoutCard from '../../Components/WorkoutCardList/WorkoutCard/WorkoutCard';
 import Modal from '../../Components/Modal/Modal';
 import Backdrop from '../../Components/Backdrop/Backdrop';
@@ -62,9 +63,9 @@ const Home = () => {
     <Fragment>
       <h2>Workout Tracker</h2>
       <div className={classes.StartCTA}>
-        <Button click={showModal}>
+        <RippleButton click={showModal}>
           Start New Workout
-        </Button>
+        </RippleButton>
       </div>
       <div className={classes.WorkoutSection}>
         <h3>Workouts</h3>

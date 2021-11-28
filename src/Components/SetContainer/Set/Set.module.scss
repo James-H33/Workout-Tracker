@@ -1,6 +1,6 @@
 .SetItem {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 20px;
+  grid-template-columns: 1fr 1fr 1fr 35px;
   padding: 8px 0;
   transform: translateX(0);
   position: relative;
@@ -20,7 +20,7 @@
 }
 
 .SetItemNum {
-  padding-left: 10px;
+  padding-left: 14px;
 }
 
 .SetItemDelete {

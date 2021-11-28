@@ -1,0 +1,26 @@
+.Checkbox {
+  position: relative;
+
+  label {
+    border: 1px solid #333;
+    border-radius: 3px;
+    padding: 0px 10px;
+  }
+
+  img {
+    position: absolute;
+    left: 0;
+    top: -4px;
+    width: 70%;
+    opacity: 0;
+    transition: opacity 200ms ease;
+  }
+}
+
+.CheckboxActive {
+  @extend .Checkbox;
+
+  img {
+    opacity: 1;
+  }
+}
