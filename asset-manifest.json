@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/Workout-Tracker/static/css/main.fe75f1cd.chunk.css",
-    "main.js": "/Workout-Tracker/static/js/main.f1620296.chunk.js",
-    "main.js.map": "/Workout-Tracker/static/js/main.f1620296.chunk.js.map",
-    "runtime-main.js": "/Workout-Tracker/static/js/runtime-main.2d98478c.js",
-    "runtime-main.js.map": "/Workout-Tracker/static/js/runtime-main.2d98478c.js.map",
-    "static/js/2.4e00bc9c.chunk.js": "/Workout-Tracker/static/js/2.4e00bc9c.chunk.js",
-    "static/js/2.4e00bc9c.chunk.js.map": "/Workout-Tracker/static/js/2.4e00bc9c.chunk.js.map",
-    "static/js/3.e8f64696.chunk.js": "/Workout-Tracker/static/js/3.e8f64696.chunk.js",
-    "static/js/3.e8f64696.chunk.js.map": "/Workout-Tracker/static/js/3.e8f64696.chunk.js.map",
+    "main.css": "/Workout-Tracker/static/css/main.6c4d0612.chunk.css",
+    "main.js": "/Workout-Tracker/static/js/main.1ea44fc2.chunk.js",
+    "main.js.map": "/Workout-Tracker/static/js/main.1ea44fc2.chunk.js.map",
+    "runtime-main.js": "/Workout-Tracker/static/js/runtime-main.429e4608.js",
+    "runtime-main.js.map": "/Workout-Tracker/static/js/runtime-main.429e4608.js.map",
+    "static/js/2.3f59e5aa.chunk.js": "/Workout-Tracker/static/js/2.3f59e5aa.chunk.js",
+    "static/js/2.3f59e5aa.chunk.js.map": "/Workout-Tracker/static/js/2.3f59e5aa.chunk.js.map",
+    "static/js/3.30fe588d.chunk.js": "/Workout-Tracker/static/js/3.30fe588d.chunk.js",
+    "static/js/3.30fe588d.chunk.js.map": "/Workout-Tracker/static/js/3.30fe588d.chunk.js.map",
     "index.html": "/Workout-Tracker/index.html",
-    "static/css/main.fe75f1cd.chunk.css.map": "/Workout-Tracker/static/css/main.fe75f1cd.chunk.css.map",
-    "static/js/2.4e00bc9c.chunk.js.LICENSE.txt": "/Workout-Tracker/static/js/2.4e00bc9c.chunk.js.LICENSE.txt",
+    "static/css/main.6c4d0612.chunk.css.map": "/Workout-Tracker/static/css/main.6c4d0612.chunk.css.map",
+    "static/js/2.3f59e5aa.chunk.js.LICENSE.txt": "/Workout-Tracker/static/js/2.3f59e5aa.chunk.js.LICENSE.txt",
     "static/media/dumbell.8cd36d92.png": "/Workout-Tracker/static/media/dumbell.8cd36d92.png",
     "static/media/ellipse.dca05dca.svg": "/Workout-Tracker/static/media/ellipse.dca05dca.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.2d98478c.js",
-    "static/js/2.4e00bc9c.chunk.js",
-    "static/css/main.fe75f1cd.chunk.css",
-    "static/js/main.f1620296.chunk.js"
+    "static/js/runtime-main.429e4608.js",
+    "static/js/2.3f59e5aa.chunk.js",
+    "static/css/main.6c4d0612.chunk.css",
+    "static/js/main.1ea44fc2.chunk.js"
   ]
 }
