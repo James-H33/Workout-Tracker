@@ -44,8 +44,6 @@ export const updateWorkout = (data) => async (dispatch) => {
 export const updateWorkoutById = (data) => async (dispatch) => {
   const response = await WorkoutService.updateWorkout(data);
 
-  console.log('Updated Workout!');
-
   dispatch({
     type: UPDATE_WORKOUTS,
     payload: response
