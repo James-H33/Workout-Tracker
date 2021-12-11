@@ -14,6 +14,7 @@ const LoginForm = () => {
     password: ''
   });
 
+  const [ isLoading, setIsLoading ] = useState(false);
   const [ errState, setErrState ] = useState('');
 
   const dispatch = useDispatch();
@@ -27,7 +28,13 @@ const LoginForm = () => {
   }
 
   const loginRequest = async () => {
+    if (isLoading) {
+      return;
+    }
+
+    setIsLoading(true);
     const response = await AuthService.login(state);
+    setIsLoading(false);
 
     if (response.success) {
       dispatch({
@@ -37,6 +44,7 @@ const LoginForm = () => {
 
       history.push('/');
     } else {
+      setIsLoading(false);
       setErrState(response.message);
     }
   }
@@ -71,7 +79,7 @@ const LoginForm = () => {
 
       {errState ? <div className={classes.ErrorMessage}>{errState}</div> : null}
 
-      <Button click={loginRequest}>Submit</Button>
+      <Button click={loginRequest} isLoading={isLoading}>Submit</Button>
     </div>
   );
 }

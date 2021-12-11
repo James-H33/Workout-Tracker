@@ -1,0 +1,40 @@
+@mixin LoadingAnimation($delay) {
+  animation-name: loading;
+  animation-duration: 800ms;
+  animation-delay: $delay;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes loading {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+.loading-icon {
+  display: flex;
+  column-gap: 2px;
+
+  span {
+    background: white;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  span:nth-child(1) {
+   @include LoadingAnimation(0ms);
+  }
+
+  span:nth-child(2) {
+    @include LoadingAnimation(150ms);
+  }
+
+  span:nth-child(3) {
+    @include LoadingAnimation(250ms);
+  }
+}
