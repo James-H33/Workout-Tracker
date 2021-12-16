@@ -6,6 +6,7 @@ import { workoutReducer } from '../Reducers';
 import { AuthService } from '../Services/Auth.service';
 
 const initialState = {
+  history: [],
   workouts: [],
   isBackdropActive: false,
   isLoggedIn: AuthService.isLoggedIn()

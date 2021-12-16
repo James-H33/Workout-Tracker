@@ -1,6 +1,7 @@
 export default class HttpService {
   constructor() {
-    this.base = 'https://jh-workout-tracker.herokuapp.com';
+    // this.base = 'https://jh-workout-tracker.herokuapp.com';
+    this.base = 'http://localhost:9090';
   }
 
   async get(path) {

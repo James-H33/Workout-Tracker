@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import classes from './Timer.module.scss';
 
-const Timer = () => {
+const Timer = ( props ) => {
+  const { timeRef } = props;
   const [ time, setTime ] = useState(0);
+
+  useEffect(() => {
+    timeRef.current = time;
+  })
 
   useEffect(() => {
     setInterval(() => {

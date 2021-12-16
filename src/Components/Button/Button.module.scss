@@ -15,6 +15,14 @@
   }
 }
 
+.SecondaryButton {
+  @extend .Button;
+  background: white;
+  border: 2px solid rgb(177, 69, 69);
+  color: rgb(177, 69, 69);
+  padding: 13px 18px;
+}
+
 .ButtonText {
   opacity: 1;
 }
