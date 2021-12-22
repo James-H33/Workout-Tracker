@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { HistoryService } from '../../Services/History.service';
 import classes from './History.module.scss';
 
@@ -7,6 +7,7 @@ const History = (props) => {
   const id = props.match.params.id;
   const { workouts } = useSelector(s => s);
   const [ history, setHistory ] = useState([]);
+  const [ workout, setWorkout ] = useState({});
 
   useEffect(() => {
     HistoryService.getHistory(id)
@@ -15,9 +16,14 @@ const History = (props) => {
       });
   }, [id]);
 
+  useEffect(() => {
+    const targetWorkout = workouts.find(w => w.id === id);
+    setWorkout(targetWorkout);
+  }, [workouts, id]);
+
   return (
     <div>
-      <h2 className={classes.Title}>History: {workouts && workouts.length ? workouts[0].title : ''}</h2>
+      <h2 className={classes.Title}>History: {workout ? workout.title : ''}</h2>
 
       {
         history.map((h, i) => {
