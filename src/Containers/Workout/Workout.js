@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { withRouter } from 'react-router';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,6 +15,7 @@ import classes from './Workout.module.scss';
 import { updateWorkoutById } from '../../Actions/WorkoutActions';
 
 import Timer from '../../Components/Timer/Timer';
+import { addHistory } from '../../Actions/HistoryAction';
 import {
   ADD_EXERCISE,
   ADD_SET,
@@ -23,15 +24,17 @@ import {
 
 const Workout = ( props ) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const router = useHistory();
   const state = useSelector(s => s);
+  const timeRef = useRef();
+  const [ exerciseModalState, setExerciseStateModal ] = useState(false);
+  const [ isFinishedModalState, setIsFinishedModalState ] = useState(false);
 
-  const [ localState, setLocaleState ] = useState({ isModalActive: false });
   const id = props.match.params.id;
   const workout = state.workouts.find( w => w.id === id);
 
   const addExercise = (name) => {
-    setLocaleState({ isModalActive: false });
+    setExerciseStateModal(false);
     dispatch({ type: ADD_EXERCISE, payload: { id: workout.id , excercise: name} });
   }
 
@@ -59,13 +62,26 @@ const Workout = ( props ) => {
     await dispatch(updateWorkoutById(updatedWorkout));
   }
 
-  const showModal = () => {
-    setLocaleState({ isModalActive: !localState.isModalActive });
+  const showExerciseModal = () => {
+    setExerciseStateModal(!exerciseModalState);
   }
 
   const saveWorkout = async () => {
+    const history = {
+      workoutId: workout.id,
+      userId: state.userId,
+      date: new Date().toUTCString(),
+      duration: timeRef.current
+    }
+
     await dispatch(updateWorkoutById(workout));
-    history.push('/');
+    await dispatch(addHistory(history));
+
+    router.push('/');
+  }
+
+  const cancelWorkout = () => {
+    router.push('/');
   }
 
   const removeSet = async (setIndex, exerciseIndex) => {
@@ -80,8 +96,8 @@ const Workout = ( props ) => {
   return (
     <div className={classes.Wrapper}>
       <div className={classes.Header}>
-        <Button click={saveWorkout}>Finish</Button>
-        <Timer />
+        <Button click={() => setIsFinishedModalState(true)}>Finish</Button>
+        <Timer timeRef={timeRef} />
       </div>
 
       <h2>{workout ? workout.title : null}</h2>
@@ -113,21 +129,36 @@ const Workout = ( props ) => {
       </div>
 
       <div>
-        <PillButton variant={'secondary'} click={() => showModal()}>
+        <PillButton variant={'secondary'} click={() => showExerciseModal()}>
           Add Exercise
         </PillButton>
       </div>
 
-      <Modal isActive={localState.isModalActive}>
+      <Modal isActive={exerciseModalState}>
         <div className={classes.ModalContent}>
           <label className={classes.ModalContentTitle}>Pick an Exercise</label>
           <ExercisePicker onExercisePicked={(v) => addExercise(v)} />
         </div>
       </Modal>
 
+      <Modal isActive={isFinishedModalState}>
+        <div className={classes.ModalContent}>
+          <label className={classes.FinishModalTitle}>Complete workout? or Cancel?</label>
+          <div className={classes.FinishModalActions}>
+            <Button click={saveWorkout}>Complete</Button>
+            <Button styleType={1} click={cancelWorkout}>Cancel</Button>
+          </div>
+        </div>
+      </Modal>
+
       <Backdrop
-        isActive={localState.isModalActive}
-        onDeactivate={() => showModal()}
+        isActive={exerciseModalState}
+        onDeactivate={() => setExerciseStateModal(false)}
+      />
+
+      <Backdrop
+        isActive={isFinishedModalState}
+        onDeactivate={() => setIsFinishedModalState(false)}
       />
     </div>
   );

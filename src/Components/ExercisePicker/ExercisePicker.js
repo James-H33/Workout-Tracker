@@ -9,7 +9,7 @@ const ExercisePicker = ( props ) => {
 
   const view = exercises.map((e, i) => {
     return (
-      <div className={classes.ExercisePickerOption} key={e.id} onClick={() => props.onExercisePicked(e.title)}>
+      <div className={classes.ExercisePickerOption} key={'exercises-' + i} onClick={() => props.onExercisePicked(e.title)}>
         <img src={e.image} alt={e.title} />
         <label>{e.title}</label>
       </div>

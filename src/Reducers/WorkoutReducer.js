@@ -12,7 +12,7 @@ import {
 } from '../Actions'
 
 import { ExerciseModel, SetModel, WorkoutModel } from '../Models';
-import { LOGGED_IN } from '../Actions/Types';
+import { LOGGED_IN, ADD_HISTORY, UPDATE_HISTORY } from '../Actions/Types';
 
 const addExercise = (state, action) => {
   const workouts = state.workouts.map(x => {
@@ -68,14 +68,9 @@ const updateSetValues = (state, action) => {
   return { ...state, workouts }
 }
 
-const updateStore = (state, action) => {
-  localStorage.setItem('workout-tracker-state', JSON.stringify(state));
-  return state;
-}
-
 const addWorkout = (state, action) => {
   const workouts = [...state.workouts, action.payload];
-  return updateStore({ ...state, workouts });
+  return { ...state, workouts };
 }
 
 const updateWorkout = (state, action) => {
@@ -99,22 +94,32 @@ const updateWorkouts = (state, action) => {
 
 const deleteWorkout = (state, action) => {
   const workouts = action.payload.workouts;
-  return updateStore({ ...state, workouts });
+  return { ...state, workouts };
 }
 
 const updateBackdrop = (state, action) => {
-  return updateStore({ ...state, isBackdropActive: action.payload.isActive });
+  return { ...state, isBackdropActive: action.payload.isActive };
 }
 
 const updateLoggedInState = (state, action) => {
   const isLoggedIn = action.payload.isLoggedIn;
 
-  return updateStore({ ...state, isLoggedIn, workouts: [] });
+  return { ...state, isLoggedIn, workouts: [], history: [] };
 }
 
-const initialState = {};
+const addHistoryEntry = (state, action) => {
+  const newHistoryEntry = action.payload;
+  const history = [...state.history, newHistoryEntry];
+  return { ...state, history };
+}
 
-export const workoutReducer = (state = initialState, action) => {
+const updateHistory = (state, action) => {
+  const newHistory = action.payload;
+  const history = newHistory;
+  return { ...state, history };
+}
+
+export const workoutReducer = (state, action) => {
   switch (action.type) {
     case ADD_SET:
       return addSet(state, action);
@@ -124,6 +129,10 @@ export const workoutReducer = (state = initialState, action) => {
       return addWorkout(state, action);
     case UPDATE_WORKOUT:
       return updateWorkout(state, action);
+    case ADD_HISTORY:
+      return addHistoryEntry(state, action);
+    case UPDATE_HISTORY:
+      return updateHistory(state, action);
     case UPDATE_WORKOUTS:
       return updateWorkouts(state, action);
     case DELETE_WORKOUT:
@@ -133,9 +142,8 @@ export const workoutReducer = (state = initialState, action) => {
     case UPDATE_SET_VALUES:
       return updateSetValues(state, action);
     case NEW_STATE:
-      return { ...state, ...action.payload }
     case STORE_STATE:
-      return updateStore(state, action);
+      return { ...state, ...action.payload }
     case BACKDROP:
       return updateBackdrop(state, action);
     default:

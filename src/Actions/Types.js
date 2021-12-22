@@ -14,3 +14,7 @@ export const LOGGED_IN = 'LOGGED_IN';
 
 //  Backdrop
 export const BACKDROP = 'BACKDROP';
+
+// History
+export const ADD_HISTORY = 'ADD_HISTORY';
+export const UPDATE_HISTORY = 'UPDATE_HISTORY';

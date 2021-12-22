@@ -8,6 +8,7 @@ const styleBuilder = (flag, activeClasses, inactiveClasses) => {
 
 const Expander = (props) => {
   const isExpanded = props.isActive || false;
+  const inlineStyles = props.inlineStyles || {};
 
   const open = () => {
     props.open(true);
@@ -37,7 +38,7 @@ const Expander = (props) => {
         <img src={ellipse} alt="..." />
       </div>
       {
-        <div className={itemContainerStyle}>
+        <div className={itemContainerStyle} style={inlineStyles}>
           {props.children}
         </div>
       }

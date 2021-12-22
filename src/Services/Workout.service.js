@@ -1,9 +1,12 @@
 import HttpService from './Http.service';
+import { WorkoutModel } from '../Models/Workout.model';
 
 const http = new HttpService();
 
 const get = async () => {
-  return await http.get('workouts');
+  const response = await http.get('workouts');
+  const workouts = response.workouts.map(w => new WorkoutModel(w));
+  return { ...response, workouts };
 }
 
 const addWorkout = async (workout) => {
