@@ -6,6 +6,7 @@ import Root from './Containers/Root/Root';
 import Home from './Containers/Home/Home';
 import Login from './Containers/Login/Login';
 import Workout from './Containers/Workout/Workout';
+import History from './Containers/History/History';
 
 import './App.css';
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/workout/:id" exact component={Workout} />
           <Route path="/login" exact component={Login} />
+          <Route path="/history/:id" exact component={History} />
         </Fragment>
       );
     } else {

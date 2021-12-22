@@ -12,7 +12,7 @@ import {
 } from '../Actions'
 
 import { ExerciseModel, SetModel, WorkoutModel } from '../Models';
-import { LOGGED_IN, ADD_HISTORY } from '../Actions/Types';
+import { LOGGED_IN, ADD_HISTORY, UPDATE_HISTORY } from '../Actions/Types';
 
 const addExercise = (state, action) => {
   const workouts = state.workouts.map(x => {
@@ -113,6 +113,12 @@ const addHistoryEntry = (state, action) => {
   return { ...state, history };
 }
 
+const updateHistory = (state, action) => {
+  const newHistory = action.payload;
+  const history = newHistory;
+  return { ...state, history };
+}
+
 export const workoutReducer = (state, action) => {
   switch (action.type) {
     case ADD_SET:
@@ -125,6 +131,8 @@ export const workoutReducer = (state, action) => {
       return updateWorkout(state, action);
     case ADD_HISTORY:
       return addHistoryEntry(state, action);
+    case UPDATE_HISTORY:
+      return updateHistory(state, action);
     case UPDATE_WORKOUTS:
       return updateWorkouts(state, action);
     case DELETE_WORKOUT:

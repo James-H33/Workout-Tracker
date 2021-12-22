@@ -23,6 +23,10 @@ const WorkoutCard = (props) => {
     setState({ isExpanderOpen: isActive });
   }
 
+  const viewHistory = () => {
+    history.push(`/history/${props.id}`);
+  }
+
   const wrapperClasses = [classes.Wrapper, state.isExpanderOpen ? classes.WrapperActive : ''].join( ' ' );
 
   return (
@@ -34,7 +38,8 @@ const WorkoutCard = (props) => {
 
       <div className={wrapperClasses}>
         <div className={classes.Expander}>
-          <Expander isActive={state.isExpanderOpen} open={onExpanderOpened}>
+          <Expander isActive={state.isExpanderOpen} open={onExpanderOpened} inlineStyles={{ minWidth: '120px' }}>
+            <div onClick={viewHistory}>View History</div>
             <div onClick={props.delete}>Delete</div>
           </Expander>
         </div>
