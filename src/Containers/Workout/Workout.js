@@ -13,6 +13,7 @@ import Button from '../../Components/Button/Button';
 import classes from './Workout.module.scss';
 
 import { updateWorkoutById } from '../../Actions/WorkoutActions';
+import { convertTimeFromDates } from '../../util/utils';
 
 import Timer from '../../Components/Timer/Timer';
 import { addHistory } from '../../Actions/HistoryAction';
@@ -71,7 +72,7 @@ const Workout = ( props ) => {
       workoutId: workout.id,
       userId: state.userId,
       date: new Date().toUTCString(),
-      duration: timeRef.current
+      duration: convertTimeFromDates(timeRef.current)
     }
 
     await dispatch(updateWorkoutById(workout));
