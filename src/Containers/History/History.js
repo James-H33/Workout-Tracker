@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 import { HistoryService } from '../../Services/History.service';
 import classes from './History.module.scss';
+import { formatTimeFromSeconds } from '../../util/utils';
 
 const History = (props) => {
   const id = props.match.params.id;
@@ -36,7 +37,7 @@ const History = (props) => {
 
               <li>
                 <label>Duration:</label>
-                <div>{h.duration}</div>
+                <div>{formatTimeFromSeconds(h.duration)}</div>
               </li>
             </div>
           )
