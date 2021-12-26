@@ -6,8 +6,6 @@ const Checkbox = ( props ) => {
   const checked = props.checked || false;
   const style = checked ? classes.CheckboxActive : classes.Checkbox;
 
-  console.log(checked);
-
   return (
     <div className={style}>
       <label onClick={(e) => props.changed(e)}>

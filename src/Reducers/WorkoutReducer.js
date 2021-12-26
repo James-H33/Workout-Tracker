@@ -39,7 +39,8 @@ const addSet = (state, action) => {
     if (e.id === action.payload.id) {
       const newSet = new SetModel();
       const exercise = e.exercises[action.payload.exerciseIndex];
-      const set = exercise.sets[0] || new SetModel();
+      const lastSetIndex = exercise.sets.length - 1;
+      const set = exercise.sets[lastSetIndex] || new SetModel();
       newSet.weight = set.weight;
       newSet.reps = set.reps;
       exercise.sets = [...exercise.sets, newSet];
