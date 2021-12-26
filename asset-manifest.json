@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/Workout-Tracker/static/css/main.06572919.chunk.css",
-    "main.js": "/Workout-Tracker/static/js/main.25811849.chunk.js",
-    "main.js.map": "/Workout-Tracker/static/js/main.25811849.chunk.js.map",
+    "main.css": "/Workout-Tracker/static/css/main.40592666.chunk.css",
+    "main.js": "/Workout-Tracker/static/js/main.c3d3b1a6.chunk.js",
+    "main.js.map": "/Workout-Tracker/static/js/main.c3d3b1a6.chunk.js.map",
     "runtime-main.js": "/Workout-Tracker/static/js/runtime-main.6b155e8a.js",
     "runtime-main.js.map": "/Workout-Tracker/static/js/runtime-main.6b155e8a.js.map",
     "static/js/2.d97fca73.chunk.js": "/Workout-Tracker/static/js/2.d97fca73.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.f88a8822.chunk.js": "/Workout-Tracker/static/js/3.f88a8822.chunk.js",
     "static/js/3.f88a8822.chunk.js.map": "/Workout-Tracker/static/js/3.f88a8822.chunk.js.map",
     "index.html": "/Workout-Tracker/index.html",
-    "static/css/main.06572919.chunk.css.map": "/Workout-Tracker/static/css/main.06572919.chunk.css.map",
+    "static/css/main.40592666.chunk.css.map": "/Workout-Tracker/static/css/main.40592666.chunk.css.map",
     "static/js/2.d97fca73.chunk.js.LICENSE.txt": "/Workout-Tracker/static/js/2.d97fca73.chunk.js.LICENSE.txt",
     "static/media/dumbell.8cd36d92.png": "/Workout-Tracker/static/media/dumbell.8cd36d92.png",
     "static/media/ellipse.dca05dca.svg": "/Workout-Tracker/static/media/ellipse.dca05dca.svg"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.6b155e8a.js",
     "static/js/2.d97fca73.chunk.js",
-    "static/css/main.06572919.chunk.css",
-    "static/js/main.25811849.chunk.js"
+    "static/css/main.40592666.chunk.css",
+    "static/js/main.c3d3b1a6.chunk.js"
   ]
 }
