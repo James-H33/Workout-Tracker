@@ -30,6 +30,17 @@ $transition-time: 350ms;
   z-index: 1;
   opacity: 1;
   letter-spacing: 1px;
+
+  &::before {
+    content: '';
+    padding: 15px;
+    width: 30px;
+    position: absolute;
+    left: 0;
+    top: -50%;
+    z-index: -1;
+    background: transparent;
+  }
 }
 
 .ExpanderBtnInactive {
